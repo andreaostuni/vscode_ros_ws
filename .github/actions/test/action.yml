@@ -1,6 +1,8 @@
-name: 'Test'
-description: 'Test using devcontainer'
+name: "Test"
+description: "Test using devcontainer"
 runs:
-  using: 'docker'
-  image: '../../../.devcontainer/Dockerfile'
+  using: "docker"
+  image: "../../../.devcontainer/Dockerfile"
   entrypoint: ".github/actions/test/run.sh"
+  args:
+    - "-v $(dirname $SSH_AUTH_SOCK)"

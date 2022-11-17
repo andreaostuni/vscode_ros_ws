@@ -1,6 +1,8 @@
-name: 'Lint'
-description: 'Lint using devcontainer'
+name: "Lint"
+description: "Lint using devcontainer"
 runs:
-  using: 'docker'
-  image: '../../../.devcontainer/Dockerfile'
+  using: "docker"
+  image: "../../../.devcontainer/Dockerfile"
   entrypoint: ".github/actions/lint/run.sh"
+  args:
+    - "-v $(dirname $SSH_AUTH_SOCK)"

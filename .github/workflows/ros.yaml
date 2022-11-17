@@ -4,17 +4,19 @@ on:
   pull_request:
   push:
   workflow_dispatch:
-    
+
 jobs:
   test:
     name: test
     runs-on: ubuntu-latest
     steps:
-      - 
-        name: Checkout code
+      - name: Checkout code
         uses: actions/checkout@v3
-      -
-        name: Test
+      - name: ssh-private-key
+        uses: webfactory/ssh-agent@v0.6.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Test
         uses: ./.github/actions/test/
 
   lint:
@@ -23,13 +25,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-          linter: [cppcheck, cpplint, uncrustify, lint_cmake, xmllint, flake8, pep257]
+        linter:
+          [cppcheck, cpplint, uncrustify, lint_cmake, xmllint, flake8, pep257]
     steps:
-      - 
-        name: Checkout code
+      - name: Checkout code
         uses: actions/checkout@v3
-      -
-        name: Run linter
+      - name: Run linter
         uses: ./.github/actions/lint/
-        env: 
+        env:
           LINTER: ${{ matrix.linter }}

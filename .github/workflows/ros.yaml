@@ -12,10 +12,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Git Config
-        run: |
-          git config --global user.email "andrea19934@google.com"
-          git config --global user.name "Andrea Ostuni"
       - name: ssh-private-key
         uses: webfactory/ssh-agent@v0.6.0
         with:

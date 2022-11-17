@@ -6,9 +6,9 @@
 repositories:
   nav2:
     type: git
-    url: https://github.com/andreaostuni/navigation2.git
+    url: git@github.com:andreaostuni/navigation2.git
     version: humble_gps_wp
   pic4ser_controllers:
     type: git
-    url: https://github.com/PIC4SeRPlatforms/ROS2Controllers.git
+    url: git@github.com:PIC4SeRPlatforms/ROS2Controllers.git
     version: humble

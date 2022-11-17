@@ -13,10 +13,16 @@
 		"--security-opt=seccomp:unconfined",
 		"--security-opt=apparmor:unconfined",
 		"--volume=/tmp/.X11-unix:/tmp/.X11-unix",
+		"--volume=/dev:/dev",
+		"--gpus=all",
+		"--name=vscode_ros_ws"
 	],
 	"containerEnv": {
-		"DISPLAY": "${localEnv:DISPLAY}",
-		"LIBGL_ALWAYS_SOFTWARE": "1" // Needed for software rendering of opengl
+		"DISPLAY": ":13.0",
+		"LIBGL_ALWAYS_SOFTWARE": "1", // Needed for software rendering of opengl
+		"NVIDIA_VISIBLE_DEVICES": "all",
+		"NVIDIA_DRIVER_CAPABILITIES": "all",
+		"QT_X11_NO_MITSHM": "1"
 	},
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
@@ -27,6 +33,7 @@
 		},
 		"terminal.integrated.defaultProfile.linux": "bash"
 	},
+	"privileged": true,
 	"extensions": [
 		"althack.ament-task-provider",
 		"DotJoshJohnson.xml",

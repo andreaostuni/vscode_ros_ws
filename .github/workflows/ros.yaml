@@ -12,9 +12,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: ssh-keys
+      - name: ssh-private-key
         uses: webfactory/ssh-agent@v0.6.0
-
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Test
         uses: ./.github/actions/test/
 
@@ -29,8 +30,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: ssh-keys
-        uses: webfactory/ssh-agent@v0.6.0
       - name: Run linter
         uses: ./.github/actions/lint/
         env:

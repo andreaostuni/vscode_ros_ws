@@ -12,6 +12,12 @@ FROM althack/ros2:humble-cuda-gazebo-nvidia
 #    && rm -rf /var/lib/apt/lists/*
 # ENV DEBIAN_FRONTEND=dialog
 
+# add credentials on build
+ARG SSH_PRIVATE_KEY
+COPY build_image.sh /build_image.sh
+RUN ./build_image.sh
+RUN rm ./build_image.sh
+
 # Set up auto-source of workspace for ros user
 ARG WORKSPACE
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc

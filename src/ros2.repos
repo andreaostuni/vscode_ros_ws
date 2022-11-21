@@ -12,3 +12,7 @@ repositories:
     type: git
     url: git@github.com:PIC4SeRPlatforms/ROS2Controllers.git
     version: humble
+  husky:
+    type: git
+    url: git@github.com:PIC4SeRPlatforms/HuskyUGV.git
+    version: humble

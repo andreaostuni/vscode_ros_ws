@@ -19,10 +19,7 @@
 	],
 	"containerEnv": {
 		"DISPLAY": ":13.0",
-		"LIBGL_ALWAYS_SOFTWARE": "1", // Needed for software rendering of opengl
-		"NVIDIA_VISIBLE_DEVICES": "all",
-		"NVIDIA_DRIVER_CAPABILITIES": "all",
-		"QT_X11_NO_MITSHM": "1"
+		"LIBGL_ALWAYS_SOFTWARE": "1" // Needed for software rendering of opengl
 	},
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
@@ -43,6 +40,9 @@
 		"redhat.vscode-yaml",
 		"smilerobotics.urdf",
 		"streetsidesoftware.code-spell-checker",
+		"me-dutour-mathieu.vscode-github-actions",
+		"eamodio.gitlens",
+		"GitHub.copilot",
 		"twxs.cmake",
 		"yzhang.markdown-all-in-one",
 		"zachflower.uncrustify"

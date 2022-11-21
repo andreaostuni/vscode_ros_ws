@@ -13,11 +13,10 @@ FROM althack/ros2:humble-cuda-gazebo-nvidia
 # ENV DEBIAN_FRONTEND=dialog
 
 # add credentials on build
-ARG SSH_PRIVATE_KEY
-COPY build_image.sh /build_image.sh
-RUN ./build_image.sh
-RUN rm ./build_image.sh
-
+# ARG SSH_PRIVATE_KEY
+# RUN 'if [ !-z "${SSH_PRIVATE_KEY}"]; then mkdir /root/.ssh/; echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_rsa; touch /root/.ssh/known_hosts; ssh-keyscan github.com >> /root/.ssh/known_hosts; fi'
+# RUN echo "if [ !-z '${SSH_PRIVATE_KEY}']; then echo 'xxx${SSH_PRIVATE_KEY}'; fi"
 # Set up auto-source of workspace for ros user
 ARG WORKSPACE
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
+RUN echo "if [ -d ${WORKSPACE}/gazebo/models ]; then export GAZEBO_MODEL_PATH=${WORKSPACE}/gazebo/models:${GAZEBO_MODEL_PATH}; fi" >> /home/ros/.bashrc

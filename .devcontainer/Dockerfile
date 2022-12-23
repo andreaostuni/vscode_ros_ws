@@ -1,4 +1,4 @@
-FROM althack/ros2:humble-cuda-gazebo-nvidia 
+FROM andreaostuni/ros2:humble-cuda-ign-gz_sim-nvidia 
 
 # ** [Optional] Uncomment this section to install additional packages. **
 #
@@ -20,7 +20,7 @@ FROM althack/ros2:humble-cuda-gazebo-nvidia
 ARG WORKSPACE
 RUN echo "export ROS_DOMAIN_ID=17" >> /home/ros/.bashrc
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
-RUN echo "if [ -f /usr/share/gazebo-11/setup.bash ]; then source /usr/share/gazebo-11/setup.bash; fi" >> /home/ros/.bashrc
-RUN echo "if [ -d ${WORKSPACE}/gazebo/models ]; then export GAZEBO_MODEL_PATH=${WORKSPACE}/gazebo/models:\$GAZEBO_MODEL_PATH; fi" >> /home/ros/.bashrc
-RUN echo "if [ -d ${WORKSPACE}/gazebo/ ]; then export GAZEBO_RESOURCE_PATH=${WORKSPACE}/gazebo/:\$GAZEBO_RESOURCE_PATH; fi" >> /home/ros/.bashrc
+# RUN echo "if [ -f /usr/share/gazebo-11/setup.bash ]; then source /usr/share/gazebo-11/setup.bash; fi" >> /home/ros/.bashrc
+# RUN echo "if [ -d ${WORKSPACE}/gazebo/models ]; then export GAZEBO_MODEL_PATH=${WORKSPACE}/gazebo/models:\$GAZEBO_MODEL_PATH; fi" >> /home/ros/.bashrc
+# RUN echo "if [ -d ${WORKSPACE}/gazebo/ ]; then export GAZEBO_RESOURCE_PATH=${WORKSPACE}/gazebo/:\$GAZEBO_RESOURCE_PATH; fi" >> /home/ros/.bashrc
 CMD [ "${WORKSPACE}/setup.sh" ]

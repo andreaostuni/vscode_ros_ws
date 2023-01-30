@@ -6,13 +6,14 @@
 			"WORKSPACE": "${containerWorkspaceFolder}"
 		}
 	},
-	"remoteUser": "ros",
+	"remoteUser": "user",
 	"runArgs": [
 		"--network=host",
 		"--cap-add=SYS_PTRACE",
 		"--security-opt=seccomp:unconfined",
 		"--security-opt=apparmor:unconfined",
 		"--volume=/tmp/.X11-unix:/tmp/.X11-unix",
+		"--name=spot_humble"
 	],
 	"containerEnv": {
 		"DISPLAY": "${localEnv:DISPLAY}",
